@@ -21,6 +21,7 @@ class TopBar extends HTMLElement {
         color: #FCA652;
         bottom: 0;
         position: fixed;
+        z-index: 10000;
         text-align: center;
       }
       h2 {
