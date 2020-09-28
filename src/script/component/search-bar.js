@@ -13,7 +13,7 @@ class SearchBar extends HTMLElement {
   }
 
   get value() {
-    return this.querySelector('#searchForm').value;
+    return this.querySelector('#inputItem').value;
   }
 
   render() {
