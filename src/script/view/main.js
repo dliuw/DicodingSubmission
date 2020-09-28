@@ -1,19 +1,29 @@
+import "../component/meal-list";
+import "../component/search-bar.js";
 import DataSource from '../data/data-source.js';
-import '../component/nav-category';
 
 const main = () => {
-  const categoryElement = document.querySelector('nav-category');
+  const searchElement = document.querySelector("search-bar");
+  const mealListElement = document.querySelector("meal-list");
 
-  const getCategory = async () => {
+  const onButtonSearchClicked = async () => {
     try {
-      const result = await DataSource.getCategory();
+      const result = await DataSource.searchItem(searchElement.value);
       renderResult(result);
-    } catch (message) {}
-  };
+    } catch (message) {
+      fallbackResult(message)
+    }
+  }
 
-  const renderResult = (results) => {
-    categoryElement.categories = results;
-  };
+  const renderResult = results => {
+    mealListElement.meals = results;
+  }
+
+  const fallbackResult = message => {
+    mealListElement.renderError(message);
+  }
+
+  searchElement.clickEvent = onButtonSearchClicked;
 };
 
 export default main;
