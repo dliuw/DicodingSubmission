@@ -8,6 +8,7 @@ main {
   width: 90%;
   max-width: 800px;
   margin: 32px auto;
+  padding-bottom: 64px;
 }
 
 .btn-custom {
@@ -18,4 +19,12 @@ main {
 .btn-custom:hover {
   color: #fca652;
   background-color: #ac4b1c;
+}
+
+.meal-category {
+  color: #fca652;
+}
+
+.meal-name {
+  color: #ac4b1c;
 }
