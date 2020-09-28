@@ -2,14 +2,18 @@ class DataSource {
   static getCategory() {
     return fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
       .then((response) => response.json())
-      .then((responseJson) => Promise.resolve(responseJson))
+      .then((responseJson) => {
+        if (responseJson.meals) {
+          Promise.resolve(responseJson.meals);
+        }
+      })
       .catch((error) => Promise.reject('Error'));
   }
 
   static searchItem(keyword) {
     return fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`
-    )
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`
+      )
       .then((response) => response.json())
       .then((responseJson) => {
         if (responseJson.meals) {
